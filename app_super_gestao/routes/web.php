@@ -13,6 +13,15 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+/*
+    Route::get($uri, $callBackFunction);
+
+http verb:
+    get/post/put/patch/delete/options
+*/
+
+Route::get('/', 'MainController@main');
+
+Route::get('/about-us', 'AboutUsController@aboutUs');
+
+Route::get('/contact', 'ContactController@contact');
