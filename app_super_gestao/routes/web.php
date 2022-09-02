@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use Symfony\Component\CssSelector\Node\FunctionNode;
 
 /*
 |--------------------------------------------------------------------------
@@ -17,13 +18,31 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', 'MainController@main')->name('site.index');
 Route::get('/about-us', 'AboutUsController@aboutUs')->name('site.about-us');
 Route::get('/contact', 'ContactController@contact')->name('site.contact');
-Route::get('/login', function(){ return 'Login'; })->name('site.login');
+Route::get('/login', function () {
+    return 'Login';
+})->name('site.login');
 
-Route::prefix('/app')->group(function(){
-    Route::get('/customers', function(){ return 'Customers'; })->name('app.customers');
-    Route::get('/providers', function(){ return 'Providers'; })->name('app.providers');
-    Route::get('/products', function(){ return 'Products'; })->name('app.products');
+Route::prefix('/app')->group(function () {
+    Route::get('/customers', function () {
+        return 'Customers';
+    })->name('app.customers');
+    Route::get('/providers', function () {
+        return 'Providers';
+    })->name('app.providers');
+    Route::get('/products', function () {
+        return 'Products';
+    })->name('app.products');
 });
+
+
+Route::get('/route1', function () {
+    echo 'Route1';
+})->name('site.rota1');
+Route::get('/route2', function () {
+    return redirect()->route('site.rota1');
+})->name('site.rota2');
+//Route::redirect('route2', 'route1');
+
 
 /*
     First Contact With Route
