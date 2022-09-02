@@ -43,6 +43,9 @@ Route::get('/route2', function () {
 })->name('site.rota2');
 //Route::redirect('route2', 'route1');
 
+Route::fallback(function() {
+    echo "This accessed route doens't exist. <a href='".route('site.index')."'>Click here</a> to be redirected to the home page.";
+});
 
 /*
     First Contact With Route
